@@ -99,7 +99,7 @@ class Load_hyper_data(Dataset):
         self.map = {}
         self.image_one = Image.open(self.all_img[0])
         self.image_one_torch = PILtoTorch(self.image_one,None).to(torch.float32)
-        if os.path.exists(os.path.join(datadir,"covisible")):
+        if not os.path.exists(os.path.join(datadir,"covisible")):
             self.image_mask = [f'{datadir}/covisible/{int(2)}x/val/{i}.png' for i in self.all_img_origin]
         else:
             self.image_mask = None
